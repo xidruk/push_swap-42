@@ -1,16 +1,19 @@
 #!/bin/bash
 
-# Generate 100 unique random numbers between 1 and 1000
+#empty array 
+numbers=()
+
 for i in {1..100}
 do
-  # Generate a random number and check if it is unique
+  #gen random unique numbers
   while true
   do
-    num=$((RANDOM % 1000 + 1))
+    num=$((RANDOM % 2001 - 1000))
     if ! echo "${numbers[@]}" | grep -q -w "$num"; then
       numbers+=($num)
-      echo "$num"
       break
     fi
   done
 done
+
+echo "${numbers[@]}"
